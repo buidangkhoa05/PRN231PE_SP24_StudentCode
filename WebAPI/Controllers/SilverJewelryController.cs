@@ -25,7 +25,7 @@ namespace WebAPI.Controllers
         //[Authorize(Roles = "Admin, Staff")]
         public async Task<IActionResult> Get()
         {
-            var result = (await _silverJewelryRepository.GetJewelries()).Adapt<List<SilverJewelryRes>>();
+            var result = (await _silverJewelryRepository.GetAll()).Adapt<List<SilverJewelryRes>>();
             return Ok(result);
         }
 

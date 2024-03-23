@@ -27,7 +27,6 @@ namespace WebAPI.Controllers
         }
 
 
-
         [HttpPost]
         public async Task<IActionResult> AddBranchAccount(BranchAccount branchAccount)
         {
