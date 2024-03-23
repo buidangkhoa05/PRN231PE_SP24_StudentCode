@@ -53,9 +53,9 @@ namespace WebAPI.Controllers
 
                 return Ok(true);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError, "");
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
             }
         }
 
@@ -75,9 +75,9 @@ namespace WebAPI.Controllers
 
                 return Ok(true);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError, "");
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
             }
         }
 
@@ -96,9 +96,9 @@ namespace WebAPI.Controllers
 
                 return Ok(true);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError, "");
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
             }
         }
     }
