@@ -1,12 +1,11 @@
-﻿using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.OData;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Repository.Implement;
 using Repository.Interface;
+using System.Text;
 using WebAPI;
-using WebAPI.Middleware;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,14 +16,10 @@ builder.Services.AddControllers().AddOData(options => options.Select().Filter().
 
 builder.Services
     .AddScoped<IAccountRepository, AccountRepository>()
-    .AddScoped<ISilverJewelryRepository, SilverJewelryRepository>()
-    .AddScoped<AuthensMidlleware>();
-
+    .AddScoped<ISilverJewelryRepository, SilverJewelryRepository>();
 
 builder.Services.AddCorsPolicy();
 
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -81,8 +76,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCorsPolicy();
-
-app.UseMiddleware<AuthensMidlleware>();
 
 app.UseAuthentication();
 app.UseAuthorization();

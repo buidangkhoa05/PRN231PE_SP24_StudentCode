@@ -47,6 +47,8 @@ namespace WebAPI.Controllers
                 if (silverJewelry == null)
                     return BadRequest();
 
+                silverJewelry.SilverJewelryId = Guid.NewGuid().ToString();
+
                 await _silverJewelryRepository.Create(silverJewelry);
 
                 return Ok(true);

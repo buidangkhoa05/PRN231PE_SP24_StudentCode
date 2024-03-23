@@ -11,7 +11,7 @@ namespace BusinessObject.Dto
     public class CreateJewelryRequest
     {
         [Required]
-        public string SilverJewelryName { get; set; }
+        public string SilverJewelryName { get; set; } = null!;
         [Required]
         public string? SilverJewelryDescription { get; set; }
         [Required]
@@ -23,7 +23,7 @@ namespace BusinessObject.Dto
         [Range(1900, Double.MaxValue)]
         public int? ProductionYear { get; set; }
         [JsonIgnore]
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime CreatedDate { get; set; } = DateTime.Now;   
         [Required]
         public string? CategoryId { get; set; }
     }
