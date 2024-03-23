@@ -22,10 +22,10 @@ namespace WebAPI.Controllers
 
         [HttpGet]
         [EnableQuery]
-        [Authorize(Roles = "Admin, Staff")]
+        //[Authorize(Roles = "Admin, Staff")]
         public async Task<IActionResult> Get()
         {
-            var result = await _silverJewelryRepository.GetAll();
+            var result = (await _silverJewelryRepository.GetJewelries()).Adapt<List<SilverJewelryRes>>();
             return Ok(result);
         }
 
@@ -47,7 +47,10 @@ namespace WebAPI.Controllers
                 if (silverJewelry == null)
                     return BadRequest();
 
+                //primary key is not auto increment => generate new primary key with guid 
                 silverJewelry.SilverJewelryId = Guid.NewGuid().ToString();
+
+                //if the primary key is int data type => getAll().Max(x => x.Id) + 1
 
                 await _silverJewelryRepository.Create(silverJewelry);
 
